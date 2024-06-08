@@ -11,7 +11,7 @@ const getProducts = async () => {
     productArray(data);
 }
 //for showing all the product
-const productArray = (data) =>{
+const productArray = (data) => {
     const productContainer = document.getElementById('item-container');
     productContainer.textContent = '';
     data.forEach(element => {
@@ -75,6 +75,15 @@ const loadProduct = async (productName) => {
 }
 
 //sort by price
+const sortByPrice = async () => {
+    const res = await fetch('https://fakestoreapi.com/products');
+    const data = await res.json();
 
+    data.forEach(element => {
+        console.log(element.price);
+        const sorted = element.price.sort((a, b) => a - b);
+        console.log(sorted);
+    });
+}
 
 getProductCatagories();
