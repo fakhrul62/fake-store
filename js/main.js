@@ -79,7 +79,7 @@ const sortByPrice = async () => {
     const res = await fetch('https://fakestoreapi.com/products');
     const data = await res.json();
 
-    data.forEach(element => {
+    data.forEach(element => { /// not working :))) Fix it. Sort() array te kaj kore..so amar array te push kora lagbo maybe
         console.log(element.price);
         const sorted = element.price.sort((a, b) => a - b);
         console.log(sorted);
