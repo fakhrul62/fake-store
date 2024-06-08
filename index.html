@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" class="bg-gray-50">
 
 <head>
     <meta charset="UTF-8">
@@ -13,10 +13,10 @@
 </head>
 
 <body>
-    <header>
-        <div class="navbar bg-base-100 w-11/12 mx-auto">
-            <div class="navbar-start">
-                <div class="dropdown">
+    <header class="bg-white">
+        <div class=" navbar bg-base-100 w-11/12 mx-auto mb-10 flex 2xl:flex-row xl:flex-row lg:flex-row md:flex-row sm:flex-row flex-col">
+            <div class="navbar-start w-screen 2xl:justify-start xl:justify-start lg:justify-start md:justify-start sm:justify-start justify-center">
+                <div class="dropdown absolute left-0">
                     <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -24,36 +24,42 @@
                                 d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </div>
                     <ul tabindex="0"
-                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>All</a></li>
-                        <li><a>Electronics</a></li>
-                        <li><a>Jewelery</a></li>
-                        <li><a>Men's Clothing</a></li>
-                        <li><a>Women's Clothing</a></li>
+                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52" id="catagory-nav1">
+                        <li><a id="all" class="" onclick="getProducts()">All</a></li>
                     </ul>
                 </div>
-                <a href="index.html" class="logo">Fake Store</a>
+                <a href="index.html" class="logo 2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-xl text-xl py-[10px]">Fake Store</a>
             </div>
             <div class="navbar-center hidden lg:flex">
-                <ul class="menu menu-horizontal px-1">
-                    <li><a>All</a></li>
-                    <li><a>Electronics</a></li>
-                    <li><a>Jewelery</a></li>
-                    <li><a>Men's Clothing</a></li>
-                    <li><a>Women's Clothing</a></li>
+                <ul class="menu menu-horizontal px-1" id="catagory-nav2">
+                    <li><a id="all" class="" onclick="getProducts()">All</a></li>
                 </ul>
             </div>
-            <div class="navbar-end justify-around">
-                <button class="btn btn-outline btn-primary tooltip tooltip-bottom hover:!bg-[#845EC2] hover:!text-white !text-[#845EC2] !border-[#845EC2]" data-tip="Sort By Price"><i class="fa-sharp fa-light fa-arrow-up-1-9"></i></button>
-                <button class="btn btn-outline btn-primary tooltip tooltip-bottom hover:!bg-[#845EC2] hover:!text-white !text-[#845EC2] !border-[#845EC2]" data-tip="Sort By Rating"><i class="fa-sharp fa-light fa-arrow-down-wide-short"></i></button>
-                <div class="join *:border-[#845EC2] *:hover:border-[#845EC2]">
-                    <input class="input input-bordered join-item" placeholder="Search..." />
-                    <button class="btn input-bordered join-item bg-[#845EC2] text-white hover:bg-white hover:text-[#845EC2]"><i class="fa-sharp fa-light fa-magnifying-glass"></i></button>
+            <div class="navbar-end flex justify-center w-screen gap-3">
+                <button
+                    class="btn btn-sqr 2xl:py-2 2xl:px-4 py-1 px-2 !text-sm 2xl:min-h-12 2xl:h-12 min-h-8 h-8  btn-outline btn-primary tooltip tooltip-bottom hover:!bg-[#845EC2] hover:!text-white !text-[#845EC2] !border-[#845EC2] w-auto"
+                    data-tip="Sort By Price"><i class="fa-sharp fa-light fa-arrow-up-1-9"></i></button>
+                <button
+                    class="btn btn-sqr 2xl:py-2 2xl:px-4 py-1 px-2 !text-sm 2xl:min-h-12 2xl:h-12 min-h-8 h-8  btn-outline btn-primary tooltip tooltip-bottom hover:!bg-[#845EC2] hover:!text-white !text-[#845EC2] !border-[#845EC2] w-auto"
+                    data-tip="Sort By Rating"><i class="fa-sharp fa-light fa-arrow-down-wide-short"></i></button>
+                <div class="join *:border-[#845EC2] *:hover:border-[#845EC2] flex">
+                    <input class="input input-bordered join-item 2xl:min-h-12 2xl:h-12 min-h-8 h-8 flex-initial !w-36" placeholder="Search..." />
+                    <button
+                        class="flex-initial w-fit btn input-bordered join-item bg-[#845EC2] text-white hover:bg-white hover:text-[#845EC2] 2xl:min-h-12 2xl:h-12 min-h-8 h-8"><i
+                            class="fa-sharp fa-light fa-magnifying-glass"></i></button>
                 </div>
             </div>
         </div>
 
     </header>
+
+    <main>
+        <div class="w-11/12 mx-auto">
+            <h1 class="text-2xl font-bold mb-5">All Products</h1>
+            <div id="item-container" class="grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
+            </div>
+        </div>
+    </main>
 
 
     <script src="js/main.js"></script>
