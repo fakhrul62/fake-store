@@ -10,6 +10,7 @@ const getProducts = async () => {
     const data = await res.json();
     productArray(data);
 }
+//for showing all the product
 const productArray = (data) =>{
     const productContainer = document.getElementById('item-container');
     productContainer.textContent = '';
@@ -32,7 +33,7 @@ const productArray = (data) =>{
         productContainer.appendChild(productDiv);
     });
 }
-
+//for showing the categories
 const catagoryArray = (catagory) => {
     const navContainer1 = document.getElementById('catagory-nav1');
     const navContainer2 = document.getElementById('catagory-nav2');
@@ -46,9 +47,8 @@ const catagoryArray = (catagory) => {
         navContainer1.appendChild(li1);
         navContainer2.appendChild(li2);
     });
-
-
 }
+//for sorting by categories
 const loadProduct = async (productName) => {
     const response = await fetch(`https://fakestoreapi.com/products/category/${productName}`);
     const data = await response.json();
@@ -72,6 +72,9 @@ const loadProduct = async (productName) => {
         `;
         productContainer.appendChild(productDiv);
     });
-
 }
+
+//sort by price
+
+
 getProductCatagories();
