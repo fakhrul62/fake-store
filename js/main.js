@@ -49,11 +49,11 @@ const catagoryArray = (catagory) => {
         li2.innerHTML = `<a onclick="loadProduct('${escapedElement}')" class="capitalize nav-list">${element}</a>`;
         navContainer1.appendChild(li1);
         navContainer2.appendChild(li2);
-        const navDiv = document.getElementById('catagory-nav2');
-        const navList = navDiv.querySelectorAll('.nav-list');
-        navList.forEach(item => {
-            item.classList.add('bg-[#845EC2]');
-        });
+        // const navDiv = document.getElementById('catagory-nav2');
+        // const navList = navDiv.querySelectorAll('.nav-list');
+        // navList.forEach(item => {
+        //     item.classList.add('bg-[#845EC2]');
+        // });
     });
 }
 //for sorting by categories(Step - 3)
