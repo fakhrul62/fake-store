@@ -52,33 +52,20 @@ const catagoryArray = (catagory) => {
         navContainer1.appendChild(li1);
         navContainer2.appendChild(li2);
     });
+    something();
 }
 //showing category in top
 const showCategory = (escapedElement) => {
     const currentCategory = document.getElementById('currentCategory');
     currentCategory.innerHTML = escapedElement;
+}
+const something = ()=>{
     const navList = document.querySelectorAll(".nav-list ");
     navList.forEach(btn => btn.addEventListener("click", (e) => {
-        
         document.querySelector(".nav-list.active").classList.remove("active");
         btn.classList.add("active")
     }));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //for sorting by categories(Step - 3)
 const loadProduct = async (productName) => {
