@@ -1,3 +1,5 @@
+let storageContainer = [];
+
 //fetching product catagory (Step - 1)
 const getProductCatagories = async (id) => {
     const res = await fetch('https://fakestoreapi.com/products/categories');
@@ -8,13 +10,14 @@ const getProductCatagories = async (id) => {
 const getProducts = async () => {
     const res = await fetch('https://fakestoreapi.com/products');
     const data = await res.json();
-    productArray(data);
+    storageContainer = data;
+    productArray();
 }
 //for showing all the product(Step - 5)
-const productArray = (data) => {
+const productArray = (productValue = storageContainer) => {
     const productContainer = document.getElementById('item-container');
     productContainer.textContent = '';
-    data.forEach(element => {
+    productValue.forEach(element => {
         const productDiv = document.createElement('div');
         productDiv.classList = `card bg-base-100 shadow-xl`;
         productDiv.innerHTML = `
@@ -25,8 +28,8 @@ const productArray = (data) => {
                 <h2 class="font-medium">${element.title}</h2>
                 <h3 class="font-semibold">$<span>${element.price}</span></h3>
                 <div class="flex items-center justify-between w-full">
-                    <span><i class="fa-sharp fa-light fa-star"></i><span>${element.rating.rate}</span></span>
-                    <button class="btn btn-ghost text-xl"><i class="fa-sharp fa-light fa-cart-plus"></i></button>
+                    <span class=""text--[#845EC2] font-bold><i class="fa-sharp fa-light fa-star"></i><span>${element.rating.rate}</span></span>
+                    <button class="btn btn-ghost text-xl text-white bg-[#845EC2] hover:text-[#845EC2]"><i class="fa-sharp fa-light fa-cart-plus"></i></button>
                 </div>
             </div>
         `;
@@ -42,48 +45,41 @@ const catagoryArray = (catagory) => {
         const li2 = document.createElement('li');
         // Manually escape single quotes in the element string
         const escapedElement = element.replace(/'/g, "\\'");
-        li1.innerHTML = `<a onclick="loadProduct('${escapedElement}')" class="capitalize">${element}</a>`;
-        li2.innerHTML = `<a onclick="loadProduct('${escapedElement}')" class="capitalize">${element}</a>`;
+        li1.innerHTML = `<a onclick="loadProduct('${escapedElement}')" class="capitalize nav-list">${element}</a>`;
+        li2.innerHTML = `<a onclick="loadProduct('${escapedElement}')" class="capitalize nav-list">${element}</a>`;
         navContainer1.appendChild(li1);
         navContainer2.appendChild(li2);
+        const navDiv = document.getElementById('catagory-nav2');
+        const navList = navDiv.querySelectorAll('.nav-list');
+        navList.forEach(item => {
+            item.classList.add('bg-[#845EC2]');
+        });
     });
 }
 //for sorting by categories(Step - 3)
 const loadProduct = async (productName) => {
     const response = await fetch(`https://fakestoreapi.com/products/category/${productName}`);
     const data = await response.json();
-    const productContainer = document.getElementById('item-container');
-    productContainer.textContent = '';
-    data.forEach(element => {
-        const productDiv = document.createElement('div');
-        productDiv.classList = `card bg-base-100 shadow-xl`;
-        productDiv.innerHTML = `
-            <figure class="px-10 pt-10">
-                <img src="${element.image}" class="rounded-xl h-52 object-contain" />
-            </figure>
-            <div class="card-body items-center text-center">
-                <h2 class="font-medium">${element.title}</h2>
-                <h3 class="font-semibold">$<span>${element.price}</span></h3>
-                <div class="flex items-center justify-between w-full">
-                    <span><i class="fa-sharp fa-light fa-star"></i><span>${element.rating.rate}</span></span>
-                    <button class="btn btn-ghost text-xl"><i class="fa-sharp fa-light fa-cart-plus"></i></button>
-                </div>
-            </div>
-        `;
-        productContainer.appendChild(productDiv);
-    });
+    //assigning the new category products to the empty array and sending it.
+    storageContainer = data;
+    productArray();
 }
 
 //sort by price
-const sortByPrice = async () => {
-    const res = await fetch('https://fakestoreapi.com/products');
-    const data = await res.json();
-
-    data.forEach(element => { /// not working :))) Fix it. Sort() array te kaj kore..so amar array te push kora lagbo maybe
-        console.log(element.price);
-        const sorted = element.price.sort((a, b) => a - b);
-        console.log(sorted);
-    });
+const sortByPrice = () => {
+    storageContainer.sort((a, b) => a.price - b.price);
+    productArray();
 }
 
+//sort by ratings
+const sortByRatings = () => {
+    storageContainer.sort((a, b) => b.rating.rate - a.rating.rate);
+    productArray();
+}
+
+
+
+
+
 getProductCatagories();
+getProducts();

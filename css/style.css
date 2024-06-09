@@ -13,3 +13,24 @@ p, a, span, div, h1, h2, h3, h4, h5, h6{
 :root{
     --primaryr: #845EC2;
 }
+.all-div {
+    display: flex;
+    width: 200px;
+    overflow: hidden;
+    font-size: clamp(30px, 1vw, 1vw);
+    font-family: "Potta One", cursive;
+    color: #845EC2;
+
+}
+
+.all-title {
+    white-space: nowrap;
+    animation: scroll 5s infinite linear;
+    padding: 0 5px;
+}
+
+@keyframes scroll {
+    100% {
+        transform: translateX(-100%);
+    }
+}
