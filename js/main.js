@@ -5,8 +5,8 @@ const getProductCatagories = async (id) => {
     const res = await fetch('https://fakestoreapi.com/products/categories');
     const value = await res.json();
     catagoryArray(value);
-    
-    
+
+
 }
 //fetching all products (Step - 4)
 const getProducts = async () => {
@@ -51,19 +51,35 @@ const catagoryArray = (catagory) => {
         li2.innerHTML = `<a onclick="loadProduct('${escapedElement}');showCategory('${escapedElement}')" class="capitalize nav-list">${element}</a>`;
         navContainer1.appendChild(li1);
         navContainer2.appendChild(li2);
-        // const navDiv = document.getElementById('catagory-nav2');
-        // const navList = navDiv.querySelectorAll('.nav-list');
-        // navList.forEach(item => {
-        //     item.classList.add('bg-[#845EC2]');
-        // });
     });
-    
 }
 //showing category in top
-const showCategory = (escapedElement) =>{
+const showCategory = (escapedElement) => {
     const currentCategory = document.getElementById('currentCategory');
     currentCategory.innerHTML = escapedElement;
+    const navList = document.querySelectorAll(".nav-list ");
+    navList.forEach(btn => btn.addEventListener("click", (e) => {
+        
+        document.querySelector(".nav-list.active").classList.remove("active");
+        btn.classList.add("active")
+    }));
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //for sorting by categories(Step - 3)
 const loadProduct = async (productName) => {
     const response = await fetch(`https://fakestoreapi.com/products/category/${productName}`);
@@ -72,7 +88,6 @@ const loadProduct = async (productName) => {
     storageContainer = data;
     productArray();
 }
-
 
 //sort by price
 const sortByPrice = () => {
@@ -87,10 +102,10 @@ const sortByRatings = () => {
 }
 
 //search
-const search = () =>{
+const search = () => {
     const searchFieldValue = document.getElementById('search-field');
-    const searchField = searchFieldValue.value;
-    if(searchField !== ''){
+    const searchField = searchFieldValue.value.toLowerCase();
+    if (searchField !== '') {
         document.getElementById('search-field').value = '';
         const filteredData = storageContainer.filter(product =>
             product.title.toLowerCase().includes(searchField)
