@@ -15,7 +15,7 @@ p, a, span, div, h1, h2, h3, h4, h5, h6{
 }
 .all-div {
     display: flex;
-    width: 200px;
+    /* width: 200px; */
     overflow: hidden;
     font-size: clamp(30px, 1vw, 1vw);
     font-family: "Potta One", cursive;
@@ -29,8 +29,8 @@ p, a, span, div, h1, h2, h3, h4, h5, h6{
     padding: 0 5px;
 }
 
-@keyframes scroll {
+/* @keyframes scroll {
     100% {
         transform: translateX(-100%);
     }
-}
+} */

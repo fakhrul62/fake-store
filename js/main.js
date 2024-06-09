@@ -5,6 +5,8 @@ const getProductCatagories = async (id) => {
     const res = await fetch('https://fakestoreapi.com/products/categories');
     const value = await res.json();
     catagoryArray(value);
+    
+    
 }
 //fetching all products (Step - 4)
 const getProducts = async () => {
@@ -28,7 +30,7 @@ const productArray = (productValue = storageContainer) => {
                 <h2 class="font-medium">${element.title}</h2>
                 <h3 class="font-semibold">$<span>${element.price}</span></h3>
                 <div class="flex items-center justify-between w-full">
-                    <span class=""text--[#845EC2] font-bold><i class="fa-sharp fa-light fa-star"></i><span>${element.rating.rate}</span></span>
+                    <span class=""text--[#845EC2] font-bold><i class="fa-sharp fa-solid fa-star"></i><span>${element.rating.rate}</span></span>
                     <button class="btn btn-ghost text-xl text-white bg-[#845EC2] hover:text-[#845EC2]"><i class="fa-sharp fa-light fa-cart-plus"></i></button>
                 </div>
             </div>
@@ -46,7 +48,7 @@ const catagoryArray = (catagory) => {
         // Manually escape single quotes in the element string
         const escapedElement = element.replace(/'/g, "\\'");
         li1.innerHTML = `<a onclick="loadProduct('${escapedElement}')" class="capitalize nav-list">${element}</a>`;
-        li2.innerHTML = `<a onclick="loadProduct('${escapedElement}')" class="capitalize nav-list">${element}</a>`;
+        li2.innerHTML = `<a onclick="loadProduct('${escapedElement}');showCategory('${escapedElement}')" class="capitalize nav-list">${element}</a>`;
         navContainer1.appendChild(li1);
         navContainer2.appendChild(li2);
         // const navDiv = document.getElementById('catagory-nav2');
@@ -55,6 +57,12 @@ const catagoryArray = (catagory) => {
         //     item.classList.add('bg-[#845EC2]');
         // });
     });
+    
+}
+//showing category in top
+const showCategory = (escapedElement) =>{
+    const currentCategory = document.getElementById('currentCategory');
+    currentCategory.innerHTML = escapedElement;
 }
 //for sorting by categories(Step - 3)
 const loadProduct = async (productName) => {
@@ -64,6 +72,7 @@ const loadProduct = async (productName) => {
     storageContainer = data;
     productArray();
 }
+
 
 //sort by price
 const sortByPrice = () => {
@@ -77,8 +86,18 @@ const sortByRatings = () => {
     productArray();
 }
 
-
-
+//search
+const search = () =>{
+    const searchFieldValue = document.getElementById('search-field');
+    const searchField = searchFieldValue.value;
+    if(searchField !== ''){
+        document.getElementById('search-field').value = '';
+        const filteredData = storageContainer.filter(product =>
+            product.title.toLowerCase().includes(searchField)
+        );
+        productArray(filteredData);
+    }
+}
 
 
 getProductCatagories();

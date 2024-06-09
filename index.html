@@ -7,6 +7,7 @@
     <title>Fake Store</title>
     <link rel="stylesheet" href="https://fakhrul62.github.io/icons/css/fontawesome.css">
     <link rel="stylesheet" href="https://fakhrul62.github.io/icons/css/sharp-light.css">
+    <link rel="stylesheet" href="https://fakhrul62.github.io/icons/css/sharp-solid.css">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -37,7 +38,7 @@
             </div>
             <div class="navbar-center hidden lg:flex">
                 <ul class="menu menu-horizontal px-1" id="catagory-nav2">
-                    <li><a id="all" class="nav-list" onclick="getProducts()">All</a></li>
+                    <li><a id="all" class="nav-list" onclick="getProducts();showCategory('All Products')">All</a></li>
                 </ul>
             </div>
             <div class="navbar-end flex justify-center w-screen gap-3">
@@ -50,10 +51,10 @@
                     data-tip="Sort By Rating"><i class="fa-sharp fa-light fa-arrow-down-wide-short"
                         onclick="sortByRatings()"></i></button>
                 <div class="join *:border-[#845EC2] *:hover:border-[#845EC2] flex">
-                    <input class="input input-bordered join-item 2xl:min-h-12 2xl:h-12 min-h-8 h-8 flex-initial !w-36"
+                    <input class="input input-bordered join-item 2xl:min-h-12 2xl:h-12 min-h-8 h-8 flex-initial !w-36" id="search-field"
                         placeholder="Search..." />
                     <button
-                        class="flex-initial w-fit btn input-bordered join-item bg-[#845EC2] text-white hover:bg-white hover:text-[#845EC2] 2xl:min-h-12 2xl:h-12 min-h-8 h-8"><i
+                        class="flex-initial w-fit btn input-bordered join-item bg-[#845EC2] text-white hover:bg-white hover:text-[#845EC2] 2xl:min-h-12 2xl:h-12 min-h-8 h-8" onclick="search()"><i
                             class="fa-sharp fa-light fa-magnifying-glass"></i></button>
                 </div>
             </div>
@@ -64,8 +65,8 @@
     <main>
         <div class="w-11/12 mx-auto">
             <div class=" all-div">
-                <h1 class="text-2xl font-bold mb-5 all-title">50% Flat Sale!</h1>
-                <h1 class="text-2xl font-bold mb-5 all-title">50% Flat Sale!</h1>
+                <h1 class="text-2xl font-bold mb-5 all-title capitalize" id="currentCategory">50% Flat Sale!</h1>
+                
 
             </div>
             <div id="item-container"
@@ -80,6 +81,7 @@
     <script src="js/main.js"></script>
     <script src="https://fakhrul62.github.io/icons/js/fontawesome.js"></script>
     <script src="https://fakhrul62.github.io/icons/js/sharp-light.js"></script>
+    <script src="https://fakhrul62.github.io/icons/js/sharp-solid.js"></script>
 </body>
 
 </html>
