@@ -26,7 +26,7 @@ const productArray = (productValue = storageContainer) => {
             <figure class="px-10 pt-10">
                 <img src="${element.image}" class="rounded-xl h-52 object-contain" />
             </figure>
-            <div class="card-body items-center text-center">
+            <div class="card-body items-center text-center justify-between">
                 <h2 class="font-medium">${element.title}</h2>
                 <h3 class="font-semibold">$<span>${element.price}</span></h3>
                 <div class="flex items-center justify-between w-full">
