@@ -2,14 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {
-      animation: {
-        wiggle: 'wiggle 1s ease-in-out infinite',
-      }
-    },
   },
   daisyui: {
     themes: ["light", "dark", "black"],
   },
-  plugins: [],
+  plugins: [
+    
+  ],
 }
