@@ -47,23 +47,24 @@ const catagoryArray = (catagory) => {
         const li2 = document.createElement('li');
         // Manually escape single quotes in the element string
         const escapedElement = element.replace(/'/g, "\\'");
-        li1.innerHTML = `<a onclick="loadProduct('${escapedElement}')" class="capitalize nav-list">${element}</a>`;
+        li1.innerHTML = `<a onclick="loadProduct('${escapedElement}');showCategory('${escapedElement}')" class="capitalize nav-list">${element}</a>`;
         li2.innerHTML = `<a onclick="loadProduct('${escapedElement}');showCategory('${escapedElement}')" class="capitalize nav-list">${element}</a>`;
         navContainer1.appendChild(li1);
         navContainer2.appendChild(li2);
     });
-    something();
+    addNavListeners();
 }
 //showing category in top
 const showCategory = (escapedElement) => {
     const currentCategory = document.getElementById('currentCategory');
     currentCategory.innerHTML = escapedElement;
 }
-const something = ()=>{
-    const navList = document.querySelectorAll(".nav-list ");
+const addNavListeners = ()=>{
+    const navList = document.querySelectorAll(".nav-list");
     navList.forEach(btn => btn.addEventListener("click", (e) => {
+        e.preventDefault();
         document.querySelector(".nav-list.active").classList.remove("active");
-        btn.classList.add("active")
+        btn.classList.add("active");
     }));
 }
 

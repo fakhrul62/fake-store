@@ -29,7 +29,8 @@
                     <ul tabindex="0"
                         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
                         id="catagory-nav1">
-                        <li><a id="all" class="nav-list active" onclick="getProducts()">All</a></li>
+                        <li><a id="all" class="nav-list" onclick="getProducts();showCategory('All Products')">All</a>
+                        </li>
                     </ul>
                 </div>
                 <a href="index.html"
@@ -38,7 +39,8 @@
             </div>
             <div class="navbar-center hidden lg:flex">
                 <ul class="menu menu-horizontal px-1" id="catagory-nav2">
-                    <li><a id="all" class="nav-list active" onclick="getProducts();showCategory('All Products')">All</a></li>
+                    <li><a id="all" class="nav-list active" onclick="getProducts();showCategory('All Products')">All</a>
+                    </li>
                 </ul>
             </div>
             <div class="navbar-end flex justify-center w-screen gap-3">
@@ -51,22 +53,25 @@
                     data-tip="Sort By Rating"><i class="fa-sharp fa-light fa-arrow-down-wide-short"
                         onclick="sortByRatings()"></i></button>
                 <div class="join *:border-[#845EC2] *:hover:border-[#845EC2] flex">
-                    <input class="input input-bordered join-item 2xl:min-h-12 2xl:h-12 min-h-8 h-8 flex-initial !w-36" id="search-field"
-                        placeholder="Search..." />
+                    <input class="input input-bordered join-item 2xl:min-h-12 2xl:h-12 min-h-8 h-8 flex-initial !w-36"
+                        id="search-field" placeholder="Search..." />
                     <button
-                        class="flex-initial w-fit btn input-bordered join-item bg-[#845EC2] text-white hover:bg-white hover:text-[#845EC2] 2xl:min-h-12 2xl:h-12 min-h-8 h-8" onclick="search()"><i
-                            class="fa-sharp fa-light fa-magnifying-glass"></i></button>
+                        class="flex-initial w-fit btn input-bordered join-item bg-[#845EC2] text-white hover:bg-white hover:text-[#845EC2] 2xl:min-h-12 2xl:h-12 min-h-8 h-8"
+                        onclick="search()"><i class="fa-sharp fa-light fa-magnifying-glass"></i></button>
                 </div>
             </div>
         </div>
 
     </header>
+    <div>
 
+
+    </div>
     <main>
         <div class="w-11/12 mx-auto">
             <div class=" all-div">
                 <h1 class="text-2xl font-bold mb-5 all-title capitalize" id="currentCategory">50% Flat Sale!</h1>
-                
+
 
             </div>
             <div id="item-container"
@@ -74,6 +79,8 @@
             </div>
         </div>
     </main>
+
+
 
 
 
